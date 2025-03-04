@@ -282,20 +282,68 @@ footer nav ul li:hover img {
     width: auto;    /* Largura automática conforme o conteúdo */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 546px) {
+    .modal-dialog {
+        max-width: 100%; /* Para telas grandes, ajuste a largura para 70% */
+    }
+
+    .display-sm-4-personal {
+        font-size: 3.3rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+}
+
+@media (min-width: 764px) {
+    .modal-dialog {
+        max-width: 100%; /* Para telas grandes, ajuste a largura para 70% */
+    }
+
+    .display-sm-4-personal {
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+}
+
+@media (min-width: 765px) {
     .modal-dialog {
         max-width: 80%; /* Para telas maiores, ajuste a largura para 80% */
     }
+
+    .display-4-personal {
+        font-size: 3rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+   
 }
 
 @media (min-width: 992px) {
     .modal-dialog {
         max-width: 70%; /* Para telas grandes, ajuste a largura para 70% */
     }
+
+    .display-4-personal {
+        font-size: 2.8rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+    
 }
 
 @media (max-width: 545px) {
     .modal-dialog {
         max-width: 100%; /* Para telas grandes, ajuste a largura para 70% */
     }
+
+    .display-sm-4-personal {
+        font-size: 3rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
 }
+
+
+
+
