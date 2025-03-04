@@ -1,0 +1,301 @@
+
+.nav-item-bh:hover {
+    background-color: #2C2C2C;
+    border-radius: 10px;
+}
+
+
+.nav-item-color:hover {
+    color: #14A44D !important;
+}
+
+.icon-lg {
+    width: 40px;
+    height: 40px;
+}
+
+.icon-md {
+    width: 32px;
+    height: 32px;
+}
+
+.border-md {
+    border: solid 5px white;
+}
+
+.border-lg {
+    border: solid 10px white;
+}
+
+.border-md-dark {
+    border: solid 5px #000000; 
+}
+
+.border-bg-dark {
+    border: solid 5px #000000; 
+}
+
+
+#works {
+    position: relative;
+    top: -70px;
+}
+
+.btn-custom {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+}
+
+.btn-icon {
+	padding: 8px;
+}
+
+.bg-bluegradient {
+    background: rgb(0,99,255);
+    background: -moz-linear-gradient(0deg, rgba(0,99,255,1) 0%, rgba(0,125,255,1) 50%, rgba(0,99,255,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,99,255,1) 0%, rgba(0,125,255,1) 50%, rgba(0,99,255,1) 100%);
+    background: linear-gradient(0deg, rgba(0,99,255,1) 0%, rgba(0,125,255,1) 50%, rgba(0,99,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0063ff",endColorstr="#0063ff",GradientType=1);
+}
+
+/* Código auto-gerado */
+
+.social-icons {
+    position: absolute;
+    right: 15px; /* Fixando à direita */
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 992px) {
+    /* Estilos que serão aplicados quando a tela for 767px ou menor */
+    .social-icons {
+        position: absolute;
+        top: -7px;
+        right: 15px; /* Fixando à direita */
+        display: flex;
+        gap: 10px;
+    }
+}
+
+#sobre {
+    background-color: #f8f9fa;  /* Cor de fundo suave */
+    padding: 40px 0;            /* Padding superior e inferior */
+}
+
+#sobre h2 {
+    font-weight: 700;           /* Deixa o título mais forte */
+    font-size: 2.5rem;          /* Ajusta o tamanho do título */
+}
+
+#sobre p {
+    font-size: 1.1rem;          /* Ajusta o tamanho da fonte */
+    line-height: 1.6;           /* Aumenta o espaçamento entre linhas */
+}
+
+.text-border {
+    text-shadow: -2px -2px 0 #fff,  
+                  2px -2px 0 #fff,  
+                 -2px  2px 0 #fff,  
+                  2px  2px 0 #fff;
+}
+
+.floating-card {
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4); /* Sombra mais forte e difusa */
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    border-radius: 12px; /* Bordas arredondadas */
+    background: white; /* Contraste melhor para a flutuação */
+}
+
+
+/* Card de Tecnologias */
+#tecnologias {
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 3rem; /* Mais espaçamento interno */
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+/* Título do Card */
+#tecnologias h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #333333;
+}
+
+/* Ajuste para os ícones e títulos das tecnologias */
+#tecnologias img {
+    transition: transform 0.2s;
+}
+
+#tecnologias img:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do ícone no hover */
+}
+
+/* Alinhamento e espaçamento dos ícones */
+#tecnologias .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#tecnologias .col-md-2 {
+    margin-bottom: 20px; /* Espaçamento entre os ícones */
+}
+
+/* Estilo para o nome das tecnologias */
+#tecnologias h5 {
+    font-size: 1.1rem;
+    color: #555555;
+    margin-top: 10px;
+}
+
+.form-control {
+    border-radius: 8px; /* Bordas mais arredondadas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Pequena sombra */
+}
+.form-group {
+    margin-bottom: 20px; /* Distância entre os campos */
+}
+.btn-submit {
+    transition: background-color 0.3s ease;
+}
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+/* Responsividade para telas pequenas */
+@media (max-width: 767px) {
+    .form-control {
+        font-size: 16px;
+    }
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparência para a camada de fundo */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que o overlay fique em frente ao iframe */
+}
+
+textarea{
+    resize: none;
+}
+
+/* Importando as fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap');
+
+/* Definindo as fontes padrão */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #2C2C2C; /* Cinza escuro para melhor legibilidade */
+}
+
+/* Títulos principais */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #14A44D; /* Verde principal */
+}
+
+/* Subtítulos e seções */
+h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #2C2C2C; /* Cinza escuro */
+}
+
+/* Links e navegação */
+.nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Botões */
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.bg-custom-success {
+    background-color: #14A44D !important;
+}
+
+.text-custom-success {
+    color: #14A44D !important; /* Verde da logo */
+}
+
+.btn-custom-success {
+    background-color: #14A44D !important; /* Verde da logo */
+    color: #FFFFFF !important; /* Texto branco para contraste */
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 8px; /* Borda arredondada para um visual moderno */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-custom-success:hover {
+    background-color: #12803A !important; /* Tom mais escuro no hover */
+}
+
+.btn-custom-border {
+    border-color: #000000 !important; /* Garante que a borda seja preta */
+    border-width: 5px !important; /* Define a largura da borda */
+}
+
+footer nav ul li {
+    background-color: #ffffff; /* Garantir o fundo branco */
+    border-radius: 50%; /* Círculo */
+    padding: 12px; /* Adicionar padding para garantir que o círculo fique visível */
+    transition: background-color 0.3s ease; /* Suavizar a transição de cor */
+}
+
+/* Efeito de hover - quando o mouse passar, o fundo muda para verde */
+footer nav ul li:hover {
+    background-color: #14A44D; /* Verde Principal */
+}
+
+/* Alterar a cor do ícone para branco no hover */
+footer nav ul li:hover img {
+    filter: brightness(0) invert(1); /* Inverter a cor do ícone para branco */
+}
+
+
+/* MODALS */
+.modal-dialog {
+    max-width: 90%; /* Largura máxima de 90% da tela */
+    width: auto;    /* Largura automática conforme o conteúdo */
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 80%; /* Para telas maiores, ajuste a largura para 80% */
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-dialog {
+        max-width: 70%; /* Para telas grandes, ajuste a largura para 70% */
+    }
+}
+
+@media (max-width: 545px) {
+    .modal-dialog {
+        max-width: 100%; /* Para telas grandes, ajuste a largura para 70% */
+    }
+}

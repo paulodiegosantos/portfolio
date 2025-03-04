@@ -1,0 +1,24 @@
+#bg-img-header {
+    background-image: url("../img/pesquisa-natureza-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+   
+}
+
+.mb-10,
+.my-10 {
+  margin-bottom: 6rem !important;
+}
+
+.pb-10,
+.py-10 {
+  padding-bottom: 6rem !important;
+}
+
+@media (min-width: 992px) {
+    #formulario-lateteral {
+        position: absolute;
+        top: -380px;
+    }
+}

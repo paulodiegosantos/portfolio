@@ -1,0 +1,23 @@
+.display-6 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+.pb-7 {
+  padding-bottom: 7rem !important;
+}
+
+#formulario {
+  position: relative;
+  top: -5em;
+  min-width: 350px;
+}
+
+.top-4em {
+  top: -4em;
+}
+
+.extra-small {
+  font-size: 70%;
+}

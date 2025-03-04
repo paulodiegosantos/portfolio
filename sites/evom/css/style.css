@@ -1,0 +1,45 @@
+.fonte_titulo {
+    font-family: Georgia;
+}
+
+.bg-roxo {
+    background-color: rgb(155, 22, 216)
+}
+
+.bg-roxo-escuro {
+    background-color: rgb(102, 21, 140)
+}
+
+#topo {
+    background: url('../img/imagem.png') top left no-repeat;
+}
+
+
+@media (min-width: 1200px){
+    .border-right-lg {
+        border-right: 2px solid #dee2e6 !important;
+      }
+
+      .display-3-xl {
+        font-size: 4.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+    
+}
+
+.border-lg {
+    border: 3px solid #dee2e6 !important;
+  }
+
+
+.border-bottom-lg {
+    border-bottom: 3px solid #dee2e6 !important;
+}
+
+@media (max-width: 1199px){
+
+    .font-size-md {
+        font-size: 2em;
+    }
+}
