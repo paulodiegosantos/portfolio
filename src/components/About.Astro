@@ -1,0 +1,112 @@
+---
+import fotoPerfil from "../assets/foto_perfil.jpg";
+import Image from "astro/components/Image.astro";
+import { Github, Linkedin, Mail, MessageCircle } from "lucide-astro";
+---
+
+<section
+	class="bg-[#D5D9E0]"
+>
+	<div
+		class="mx-auto flex max-w-7xl items-center px-6 py-16 lg:min-h-[calc(100vh-4rem)]"
+	>
+		<div
+			class="grid w-full items-center gap-10 lg:grid-cols-[380px_1fr] lg:gap-16"
+		>
+
+			<!-- Foto -->
+			<div class="flex justify-center">
+				<div class="relative">
+
+					<!-- Glow -->
+					<div
+						class="absolute inset-0 rounded-full bg-[#286AF4]/20 blur-3xl"
+					></div>
+
+					<!-- Foto -->
+					<div
+						class="relative aspect-square w-64 overflow-hidden rounded-full border border-[#286AF4]/30 shadow-2xl shadow-[#286AF4]/20 sm:w-72 lg:w-80"
+					>
+						<Image
+							src={fotoPerfil}
+							alt="Foto de Paulo Diego"
+							width={320}
+							height={320}
+							class="h-full w-full object-cover"
+						/>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Informações -->
+			<div class="flex flex-col justify-center">
+
+				<p class="text-lg font-medium tracking-wide text-[#286AF4]">
+					Olá! Eu sou
+				</p>
+
+				<h1
+					class="mt-3 text-5xl font-extrabold tracking-tight text-[#2C2C2C] lg:text-6xl"
+				>
+					Paulo Diego Dos Santos
+				</h1>
+
+				<h2 class="mt-4 text-2xl font-medium text-[#286AF4]">
+					Desenvolvedor de Software
+				</h2>
+
+				<p class="mt-8 max-w-2xl text-lg leading-8 text-[#2C2C2C]">
+					Apaixonado por transformar ideias em soluções modernas,
+					escaláveis e intuitivas. Desenvolvo aplicações web e mobile
+					com foco em desempenho, qualidade de código e excelente
+					experiência do usuário.
+				</p>
+
+				<!-- Redes sociais -->
+				<div class="mt-8 flex items-center gap-10">
+
+					<a
+						href="https://github.com/paulodiegosantos/"
+						aria-label="GitHub"
+						class="text-[#2C2C2C]/50 transition hover:-translate-y-1 hover:text-[#286AF4]"
+						target="_blank"
+					>
+						<Github class="h-12 w-12" />
+					</a>
+
+					<a
+						href="https://www.linkedin.com/in/paulodiegosantos/"
+						aria-label="LinkedIn"
+						class="text-[#2C2C2C]/50 transition hover:-translate-y-1 hover:text-[#286AF4]"
+						target="_blank"
+					>
+						<Linkedin class="h-12 w-12" />
+					</a>
+
+					<a
+						href="mailto:paulodslima@outlook.com"
+						aria-label="Email"
+						class="text-[#2C2C2C]/50 transition hover:-translate-y-1 hover:text-[#286AF4]"
+					>
+						<Mail class="h-12 w-12" />
+					</a>
+
+				</div>
+
+				<!-- Botão -->
+				<a
+					href="https://wa.me/5582988400846"
+					class="group mt-10 inline-flex w-fit items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#286AF4]/90 hover:shadow-lg hover:shadow-[#286AF4]/30"
+				>
+					Conversar no WhatsApp
+					
+					<MessageCircle  class="h-6 w-6" />
+
+				</a>
+
+			</div>
+
+		</div>
+	</div>
+</section>

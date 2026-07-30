@@ -1,0 +1,830 @@
+---
+
+import ProjectCard from "./ProjectCard.astro";
+import projectsData from "../data/projects.json";
+
+interface Project {
+title: string;
+description: string;
+fullDescription: string;
+image: string;
+video?: string;
+area: string;
+technologies: string[];
+link: string;
+date: string;
+}
+
+interface Props {
+mode: "preview" | "all";
+}
+
+const { mode } = Astro.props;
+
+const isPreview = mode === "preview";
+
+const projects: Project[] = (
+projectsData as Project[]
+).sort(
+(a, b) =>
+new Date(b.date).getTime() -
+new Date(a.date).getTime(),
+);
+
+const visibleProjects = isPreview
+? projects.slice(0, 6)
+: projects;
+
+const areas = [
+"Front-end",
+"Back-end",
+"Dados & BI",
+"Automação",
+];
+
+const technologies = [
+...new Set(
+projects.flatMap(
+(project) => project.technologies,
+),
+),
+];
+---
+
+<section
+	id="projetos"
+	class="mx-auto w-full max-w-7xl px-6 py-24"
+>
+	<!-- Cabeçalho -->
+	<div class="text-center">
+		<p class="text-lg font-medium text-[#286AF4]">
+			Portfólio
+		</p>
+
+	<h2 class="mt-3 text-4xl font-extrabold text-[#2C2C2C]">
+		{isPreview
+			? "Projetos recentes"
+			: "Todos os projetos"}
+	</h2>
+
+	<p
+		class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#2C2C2C]/70"
+	>
+		{
+			isPreview
+				? "Conheça alguns dos projetos mais recentes que desenvolvi utilizando diferentes tecnologias e ferramentas."
+				: "Explore todos os projetos que desenvolvi utilizando diferentes tecnologias e ferramentas."
+		}
+	</p>
+</div>
+
+<!-- Filtros -->
+{
+	!isPreview && (
+		<div class="mt-12 flex flex-col items-center gap-6">
+			<!-- Filtros por área -->
+			<div class="flex flex-wrap justify-center gap-3">
+				<p
+					class="w-full text-center text-sm font-semibold uppercase tracking-wider text-[#2C2C2C]/50"
+				>
+					Área de atuação
+				</p>
+
+				<button
+					data-filter-type="area"
+					data-filter="all"
+					class="filter-button active-filter rounded-full bg-[#286AF4] px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300"
+				>
+					Todas
+				</button>
+
+				{
+					areas.map((area) => (
+						<button
+							data-filter-type="area"
+							data-filter={area}
+							class="filter-button rounded-full border border-[#2C2C2C]/20 px-5 py-2.5 text-sm font-medium text-[#2C2C2C]/70 transition-colors duration-300 hover:border-[#286AF4] hover:text-[#286AF4]"
+						>
+							{area}
+						</button>
+					))
+				}
+			</div>
+
+			<!-- Filtros por tecnologia -->
+			<div class="flex flex-wrap justify-center gap-3">
+				<p
+					class="w-full text-center text-sm font-semibold uppercase tracking-wider text-[#2C2C2C]/50"
+				>
+					Tecnologias
+				</p>
+
+				<button
+					data-filter-type="technology"
+					data-filter="all"
+					class="filter-button active-filter rounded-full bg-[#286AF4] px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300"
+				>
+					Todas
+				</button>
+
+				{
+					technologies.map(
+						(technology) => (
+							<button
+								data-filter-type="technology"
+								data-filter={technology}
+								class="filter-button rounded-full border border-[#2C2C2C]/20 px-5 py-2.5 text-sm font-medium text-[#2C2C2C]/70 transition-colors duration-300 hover:border-[#286AF4] hover:text-[#286AF4]"
+							>
+								{technology}
+							</button>
+						),
+					)
+				}
+			</div>
+		</div>
+	)
+}
+
+<!-- Cards -->
+<div
+	id="project-grid"
+	class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+>
+	{
+		visibleProjects.map(
+			(project, index) => (
+				<div
+					class="project-item"
+					data-area={project.area}
+					data-technologies={project.technologies.join("|")}
+					data-project-id={index}
+					data-title={project.title}
+					data-description={project.fullDescription}
+					data-image={project.image}
+					data-video={project.video ?? ""}
+					data-link={project.link}
+				>
+					<ProjectCard
+						title={project.title}
+						description={project.description}
+						image={project.image}
+						technologies={project.technologies}
+						link={project.link}
+						projectId={index}
+						isNew={index === 0}
+					/>
+				</div>
+			),
+		)
+	}
+</div>
+
+<!-- Mensagem quando nenhum projeto for encontrado -->
+{
+	!isPreview && (
+		<p
+			id="no-projects"
+			class="mt-16 hidden text-center text-lg text-[#2C2C2C]/60"
+		>
+			Nenhum projeto encontrado com os filtros selecionados.
+		</p>
+	)
+}
+
+<!-- Botão para página completa -->
+{
+	isPreview && (
+		<div class="mt-16 flex justify-center">
+			<a
+				href="/Portfolio"
+				class="group inline-flex items-center gap-3 rounded-full border border-[#286AF4] px-8 py-4 font-medium text-[#286AF4] transition-all duration-300 hover:-translate-y-1 hover:bg-[#286AF4] hover:text-white hover:shadow-lg hover:shadow-[#286AF4]/20"
+			>
+				Ver todos os projetos
+
+				<span
+					class="transition-transform duration-300 group-hover:translate-x-1"
+				>
+					→
+				</span>
+			</a>
+		</div>
+	)
+}
+
+</section>
+
+<!-- Modal de detalhes do projeto -->
+
+<div
+	id="project-modal"
+	class="fixed inset-0 z-50 hidden items-center justify-center bg-[#2C2C2C]/80 p-4 backdrop-blur-sm"
+>
+	<div
+		id="project-modal-content"
+		class="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white shadow-2xl"
+	>
+		<!-- Botão fechar -->
+		<button
+			id="close-project-modal"
+			aria-label="Fechar detalhes do projeto"
+			class="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#2C2C2C]/80 text-2xl text-white transition hover:bg-[#286AF4]"
+		>
+			×
+		</button>
+
+	<div class="grid lg:grid-cols-2">
+		<!-- Mídia -->
+		<div
+			id="modal-media"
+			class="relative flex min-h-[300px] items-center justify-center overflow-hidden bg-[#F5F7FA]"
+		>
+		</div>
+
+		<!-- Informações -->
+		<div class="p-8 lg:p-12">
+			<p
+				id="modal-area"
+				class="text-sm font-semibold uppercase tracking-wider text-[#286AF4]"
+			>
+			</p>
+
+			<h2
+				id="modal-title"
+				class="mt-3 text-4xl font-extrabold text-[#2C2C2C]"
+			>
+			</h2>
+
+			<p
+				id="modal-description"
+				class="mt-6 text-lg leading-8 text-[#2C2C2C]/70"
+			>
+			</p>
+
+			<div
+				id="modal-technologies"
+				class="mt-8 flex flex-wrap gap-2"
+			>
+			</div>
+
+			<a
+				id="modal-link"
+				href="#"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="mt-10 inline-flex items-center gap-3 rounded-full bg-[#286AF4] px-6 py-3 font-medium text-white transition hover:bg-[#286AF4]/90"
+			>
+				Ver projeto
+
+				<span>
+					→
+				</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<!-- Modal: lógica independente do preview -->
+
+<script>
+	/*
+	 * ============================
+	 * MODAL
+	 * ============================
+	 */
+
+	const projectModal =
+		document.querySelector<HTMLElement>(
+			"#project-modal",
+		);
+
+	const closeProjectModal =
+		document.querySelector<HTMLButtonElement>(
+			"#close-project-modal",
+		);
+
+	const modalMedia =
+		document.querySelector<HTMLElement>(
+			"#modal-media",
+		);
+
+	const modalArea =
+		document.querySelector<HTMLElement>(
+			"#modal-area",
+		);
+
+	const modalTitle =
+		document.querySelector<HTMLElement>(
+			"#modal-title",
+		);
+
+	const modalDescription =
+		document.querySelector<HTMLElement>(
+			"#modal-description",
+		);
+
+	const modalTechnologies =
+		document.querySelector<HTMLElement>(
+			"#modal-technologies",
+		);
+
+	const modalLink =
+		document.querySelector<HTMLAnchorElement>(
+			"#modal-link",
+		);
+
+	/*
+	 * Abrir modal ao clicar no card
+	 */
+
+	const projectItems =
+		document.querySelectorAll<HTMLElement>(
+			".project-item",
+		);
+
+	projectItems.forEach(
+		(projectItem) => {
+			const projectCard =
+				projectItem.querySelector<HTMLElement>(
+					".project-card",
+				);
+
+			projectCard?.addEventListener(
+				"click",
+				() => {
+					const title =
+						projectItem.dataset.title ??
+						"";
+
+					const description =
+						projectItem.dataset.description ??
+						"";
+
+					const image =
+						projectItem.dataset.image ??
+						"";
+
+					const video =
+						projectItem.dataset.video ??
+						"";
+
+					const area =
+						projectItem.dataset.area ??
+						"";
+
+					const link =
+						projectItem.dataset.link ??
+						"#";
+
+					const technologies =
+						projectItem.dataset.technologies
+							?.split("|") ??
+						[];
+
+					/*
+					 * Preenche informações
+					 */
+
+					if (modalTitle) {
+						modalTitle.textContent =
+							title;
+					}
+
+					if (modalArea) {
+						modalArea.textContent =
+							area;
+					}
+
+					if (modalDescription) {
+						modalDescription.textContent =
+							description;
+					}
+
+					if (modalLink) {
+						modalLink.href =
+							link;
+					}
+
+					/*
+					 * Tecnologias
+					 */
+
+					if (
+						modalTechnologies
+					) {
+						modalTechnologies.innerHTML =
+							"";
+
+						technologies.forEach(
+							(
+								technology,
+							) => {
+								const technologyElement =
+									document.createElement(
+										"span",
+									);
+
+								technologyElement.className =
+									"rounded-full bg-[#286AF4]/10 px-3 py-1 text-sm font-medium text-[#286AF4]";
+
+								technologyElement.textContent =
+									technology;
+
+								modalTechnologies.appendChild(
+									technologyElement,
+								);
+							},
+						);
+					}
+
+					/*
+					 * Mídia
+					 */
+
+					if (
+						modalMedia
+					) {
+						modalMedia.innerHTML =
+							"";
+
+						if (
+							video
+						) {
+							const isYouTube =
+								video.includes(
+									"youtube.com",
+								) ||
+								video.includes(
+									"youtu.be",
+								);
+
+							if (
+								isYouTube
+							) {
+								let videoId =
+									"";
+
+								if (
+									video.includes(
+										"youtube.com/watch?v=",
+									)
+								) {
+									videoId =
+										new URL(
+											video,
+										)
+											.searchParams
+											.get(
+												"v",
+											) ??
+										"";
+								} else if (
+									video.includes(
+										"youtu.be/",
+									)
+								) {
+									videoId =
+										video
+											.split(
+												"youtu.be/",
+											)[1]
+											?.split(
+												"?",
+											)[0] ??
+										"";
+								}
+
+								const iframeElement =
+									document.createElement(
+										"iframe",
+									);
+
+								iframeElement.src =
+									`https://www.youtube.com/embed/${videoId}`;
+
+								iframeElement.className =
+									"h-full w-full";
+
+								iframeElement.allowFullscreen =
+									true;
+
+								iframeElement.allow =
+									"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+								modalMedia.appendChild(
+									iframeElement,
+								);
+							} else {
+								const videoElement =
+									document.createElement(
+										"video",
+									);
+
+								videoElement.src =
+									video;
+
+								videoElement.controls =
+									true;
+
+								videoElement.autoplay =
+									true;
+
+								videoElement.className =
+									"h-full w-full object-cover";
+
+								modalMedia.appendChild(
+									videoElement,
+								);
+							}
+						} else {
+							/*
+							 * Fundo desfocado
+							 */
+
+							const backgroundImage =
+								document.createElement(
+									"img",
+								);
+
+							backgroundImage.src =
+								image;
+
+							backgroundImage.alt =
+								"";
+
+							backgroundImage.setAttribute(
+								"aria-hidden",
+								"true",
+							);
+
+							backgroundImage.className =
+								"absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-xl";
+
+							/*
+							 * Imagem principal
+							 */
+
+							const imageElement =
+								document.createElement(
+									"img",
+								);
+
+							imageElement.src =
+								image;
+
+							imageElement.alt =
+								`Imagem do projeto ${title}`;
+
+							imageElement.className =
+								"relative z-10 max-h-[70vh] max-w-full object-contain p-6";
+
+							/*
+							 * Adiciona as imagens
+							 */
+
+							modalMedia.appendChild(
+								backgroundImage,
+							);
+
+							modalMedia.appendChild(
+								imageElement,
+							);
+						}
+					}
+
+					/*
+					 * Exibe o modal
+					 */
+
+					projectModal?.classList.remove(
+						"hidden",
+					);
+
+					projectModal?.classList.add(
+						"flex",
+					);
+
+					document.body.classList.add(
+						"overflow-hidden",
+					);
+				},
+			);
+		},
+	);
+
+	/*
+	 * Fechar modal
+	 */
+
+	const closeModal = () => {
+		projectModal?.classList.add(
+			"hidden",
+		);
+
+		projectModal?.classList.remove(
+			"flex",
+		);
+
+		document.body.classList.remove(
+			"overflow-hidden",
+		);
+	};
+
+	closeProjectModal?.addEventListener(
+		"click",
+		closeModal,
+	);
+
+	/*
+	 * Fechar clicando fora
+	 */
+
+	projectModal?.addEventListener(
+		"click",
+		(event) => {
+			if (
+				event.target ===
+				projectModal
+			) {
+				closeModal();
+			}
+		},
+	);
+
+	/*
+	 * Fechar com Escape
+	 */
+
+	document.addEventListener(
+		"keydown",
+		(event) => {
+			if (
+				event.key ===
+					"Escape" &&
+				projectModal &&
+				!projectModal.classList.contains(
+					"hidden",
+				)
+			) {
+				closeModal();
+			}
+		},
+	);
+</script>
+
+<!-- Filtros: lógica exclusiva da página completa -->
+
+{
+!isPreview && ( <script>
+const filterButtons =
+document.querySelectorAll<HTMLButtonElement>(
+".filter-button",
+);
+
+		const filterProjectItems =
+			document.querySelectorAll<HTMLElement>(
+				".project-item",
+			);
+
+		const noProjects =
+			document.querySelector<HTMLElement>(
+				"#no-projects",
+			);
+
+		let selectedArea =
+			"all";
+
+		let selectedTechnology =
+			"all";
+
+		filterButtons.forEach(
+			(button) => {
+				button.addEventListener(
+					"click",
+					() => {
+						const filterType =
+							button.dataset
+								.filterType;
+
+						const selectedFilter =
+							button.dataset
+								.filter ??
+							"all";
+
+						if (
+							filterType ===
+							"area"
+						) {
+							selectedArea =
+								selectedFilter;
+						}
+
+						if (
+							filterType ===
+							"technology"
+						) {
+							selectedTechnology =
+								selectedFilter;
+						}
+
+						filterButtons.forEach(
+							(
+								filterButton,
+							) => {
+								if (
+									filterButton
+										.dataset
+										.filterType ===
+									filterType
+								) {
+									filterButton.classList.remove(
+										"bg-[#286AF4]",
+										"text-white",
+									);
+
+									filterButton.classList.add(
+										"border",
+										"border-[#2C2C2C]/20",
+										"text-[#2C2C2C]/70",
+									);
+								}
+							},
+						);
+
+						button.classList.remove(
+							"border",
+							"border-[#2C2C2C]/20",
+							"text-[#2C2C2C]/70",
+						);
+
+						button.classList.add(
+							"bg-[#286AF4]",
+							"text-white",
+						);
+
+						let visibleProjects =
+							0;
+
+						filterProjectItems.forEach(
+							(
+								project,
+							) => {
+								const projectArea =
+									project
+										.dataset
+										.area ??
+									"";
+
+								const projectTechnologies =
+									project
+										.dataset
+										.technologies
+										?.split(
+											"|",
+										) ??
+									[];
+
+								const matchesArea =
+									selectedArea ===
+										"all" ||
+									projectArea ===
+										selectedArea;
+
+								const matchesTechnology =
+									selectedTechnology ===
+										"all" ||
+									projectTechnologies.includes(
+										selectedTechnology,
+									);
+
+								const shouldShow =
+									matchesArea &&
+									matchesTechnology;
+
+								project.classList.toggle(
+									"hidden",
+									!shouldShow,
+								);
+
+								if (
+									shouldShow
+								) {
+									visibleProjects++;
+								}
+							},
+						);
+
+						noProjects?.classList.toggle(
+							"hidden",
+							visibleProjects >
+								0,
+						);
+					},
+				);
+			},
+		);
+	</script>
+)
+
+}

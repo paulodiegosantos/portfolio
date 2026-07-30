@@ -1,7 +1,54 @@
 ---
-
+import Image from "astro/components/Image.astro";
+import logo from "../assets/logo.png";
+import { Download } from "lucide-astro";
 ---
 
-<header>
-    
+<header class="bg-[#2C2C2C]">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex h-16 items-center justify-between">
+
+			<!-- Logo -->
+			<div class="flex-1 md:flex md:items-center md:gap-12">
+				<a class="block" href="/">
+					<span class="sr-only">Home</span>
+
+					<Image
+						src={logo}
+						alt="Logo PDS"
+						height={32}
+					/>
+				</a>
+			</div>
+
+			<!-- Navegação -->
+			<div class="md:flex md:items-center md:gap-12">
+
+				<nav aria-label="Global">
+					<ul class="flex items-center gap-12 text-lg">
+
+						<li>
+							<a
+								class="text-white transition-colors duration-300 hover:text-[#286AF4]"
+								href="/"
+							>
+								Home
+							</a>
+						</li>
+
+						<li>
+							<a
+								class="text-white transition-colors duration-300 hover:text-[#286AF4]"
+								href="/Portfolio"
+							>
+								Portfólio
+							</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+	</div>
 </header>

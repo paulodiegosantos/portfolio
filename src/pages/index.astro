@@ -1,9 +1,10 @@
 ---
 import Layout from "../layout/Layout.astro"
+import About from "../components/About.astro"
+import ProjectGrid from "../components/ProjectGrid.astro"
 ---
 
-<Layout title="Home" description="Página inicial do meu portfólio">
-	<h1 class="text-3xl text-indigo-500 font-bold underline ">
-		Hello world!
-	</h1>
+<Layout title="Home" description="Página portfólio do desenvolvedor de software Paulo Diego Dos Santos">
+	<About />
+	<ProjectGrid mode="preview"/>
 </Layout>

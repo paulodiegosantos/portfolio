@@ -1,0 +1,86 @@
+---
+
+interface Props {
+title: string;
+description: string;
+image: string;
+technologies: string[];
+link: string;
+projectId: number;
+isNew?: boolean;
+}
+
+const {
+title,
+description,
+image,
+technologies,
+link,
+projectId,
+isNew,
+} = Astro.props;
+---
+
+<article
+	data-project-id={projectId}
+	class="project-card group relative cursor-pointer overflow-hidden rounded-2xl border border-[#2C2C2C]/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+>
+	<!-- Faixa de projeto novo -->
+	{
+		isNew && (
+			<div class="pointer-events-none absolute right-[-42px] top-[22px] z-20 w-40 rotate-45 bg-[#286AF4] py-2 text-center text-sm font-bold uppercase tracking-wider text-white shadow-md">
+				Novo
+			</div>
+		)
+	}
+
+<!-- Imagem do projeto -->
+<div class="relative aspect-video w-full overflow-hidden bg-[#F5F7FA]">
+	<!-- Fundo usando a própria imagem -->
+	<img
+		src={image}
+		alt=""
+		aria-hidden="true"
+		class="absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-xl"
+	/>
+
+	<!-- Imagem principal -->
+	<img
+		src={image}
+		alt={`Imagem do projeto ${title}`}
+		class="relative z-10 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+	/>
+</div>
+
+<!-- Informações do projeto -->
+<div class="p-6">
+	<h3 class="text-2xl font-bold text-[#2C2C2C]">
+		{title}
+	</h3>
+
+	<p class="mt-4 text-[#2C2C2C]/70">
+		{description}
+	</p>
+
+	<!-- Tecnologias -->
+	<div class="mt-6 flex flex-wrap gap-2">
+		{
+			technologies.map((technology) => (
+				<span class="rounded-full bg-[#286AF4]/10 px-3 py-1 text-sm font-medium text-[#286AF4]">
+					{technology}
+				</span>
+			))
+		}
+	</div>
+
+	<!-- Link visual -->
+	<div class="mt-8 inline-flex items-center gap-2 font-medium text-[#286AF4]">
+		Ver mais
+
+		<span class="transition-transform duration-300 group-hover:translate-x-1">
+			→
+		</span>
+	</div>
+</div>
+
+</article>

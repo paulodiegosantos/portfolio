@@ -1,0 +1,104 @@
+[
+	{
+	"title": "Sistema Web Completo",
+	"description": "Sistema web completo com autenticação, gerenciamento de usuários, projetos, envio de e-mails e compartilhamento de arquivos.",
+	"fullDescription": "O Sistema Web Completo é uma aplicação desenvolvida para reunir e aplicar, na prática, os conhecimentos adquiridos durante o curso Desenvolvimento Web Completo da Udemy. O projeto conta com funcionalidades de autenticação, cadastro, atualização e exclusão de usuários, além do gerenciamento de projetos, envio de e-mails e recursos para upload e download de arquivos. A aplicação foi desenvolvida com o objetivo de integrar diferentes conceitos do desenvolvimento web em um único sistema e foi publicada utilizando a hospedagem gratuita do InfinityFree.",
+	"image": "/images/sistema-web-completo.png",
+	"video": "",
+	"area": "Full Stack",
+	"technologies": [
+	"HTML5",
+	"CSS3",
+	"JavaScript",
+	"PHP",
+	"MySQL"
+	],
+	"link": "https://www.linkedin.com/posts/paulodiegosantos_desenvolvimentoweb-cursoonline-sistemaweb-activity-7189639379395428354-NH6t?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMfsdcBLaQuk4wJB-s41cR_SN4I61pk05E",
+	"date": "2000-01-01"
+	},
+	{
+	"title": "Tarefas em Dia",
+	"description": "Aplicativo mobile para organização de tarefas, desenvolvido com React Native e Firebase.",
+	"fullDescription": "O Tarefas em Dia é um aplicativo mobile desenvolvido como projeto acadêmico para colocar em prática conhecimentos de desenvolvimento mobile. Inspirado na metodologia Scrum, o aplicativo permite cadastrar e organizar tarefas de forma simples e visual, acompanhando seu progresso entre os status Para fazer, Fazendo e Terminada. Durante o desenvolvimento, foram aplicados conceitos de estruturação e navegação entre telas no React Native, autenticação de usuários, armazenamento de dados com Firebase e gerenciamento dinâmico dos estados das tarefas.",
+	"image": "/images/tarefas-em-dia.png",
+	"video": "",
+	"area": "Mobile",
+	"technologies": [
+	"React Native",
+	"Firebase",
+	"JavaScript"
+	],
+	"link": "https://www.linkedin.com/posts/paulodiegosantos_reactnative-firebase-devmobile-activity-7336738661591347200-pURm?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMfsdcBLaQuk4wJB-s41cR_SN4I61pk05E",
+	"date": "2000-01-02"
+	},
+	{
+	"title": "Challenge Amigo Secreto",
+	"description": "Aplicação web para adicionar nomes e realizar o sorteio aleatório de um amigo secreto.",
+	"fullDescription": "O Challenge Amigo Secreto é uma aplicação desenvolvida como parte de um desafio técnico do programa Oracle Next Education (ONE) em parceria com a Alura. O projeto permite adicionar nomes a uma lista, validar campos vazios e realizar um sorteio aleatório para definir o amigo secreto. A aplicação foi desenvolvida utilizando JavaScript puro, sem o uso de frameworks, com foco na implementação da lógica e na manipulação dinâmica dos elementos da interface.",
+	"image": "/images/amigo-secreto.png",
+	"video": "",
+	"area": "Front-end",
+	"technologies": [
+	"HTML5",
+	"CSS3",
+	"JavaScript"
+	],
+	"link": "https://paulodiegosantos.github.io/Challenge-amigo-secreto",
+	"date": "2000-02-01"
+	},
+	{
+	"title": "Conversor de Moedas",
+	"description": "Aplicação Java para conversão de moedas em tempo real utilizando uma API externa.",
+	"fullDescription": "O Conversor de Moedas é uma aplicação desenvolvida como parte do Challenge da formação Oracle Next Education (ONE). O projeto permite realizar conversões entre o real brasileiro e outras moedas por meio do consumo de uma API externa. A aplicação utiliza o HttpClient para realizar requisições, o Gson para interpretar respostas em JSON e uma interface interativa via terminal. Durante o desenvolvimento, foram aplicados conceitos de consumo de APIs REST, manipulação de dados externos, tratamento de exceções, validação de entradas e organização da lógica de negócio em Java.",
+	"image": "/images/default-api-logo.png",
+	"video": "",
+	"area": "Back-end",
+	"technologies": [
+	"Java",
+	"HttpClient",
+	"Gson",
+	"API REST",
+	"JSON"
+	],
+	"link": "https://github.com/paulodiegosantos/Oracle-Next-Education---Challenge-conversor-de-moedas",
+	"date": "2000-02-02"
+	},
+	{
+	"title": "Literalura",
+	"description": "Aplicação Java para consulta e registro de livros e autores, desenvolvida com Spring Boot e PostgreSQL.",
+	"fullDescription": "O Literalura é uma aplicação desenvolvida como parte do Challenge da formação Oracle Next Education (ONE). O projeto permite buscar e registrar livros e autores, consultar livros por idioma e identificar autores que estavam vivos em determinado ano. A aplicação utiliza Spring Boot para estruturar o sistema, Spring Data JPA e Hibernate para o mapeamento e a persistência dos dados, além do PostgreSQL como banco de dados. Durante o desenvolvimento, foram aplicados conceitos de modelagem de entidades, relacionamentos entre dados, criação de DTOs, consultas personalizadas, filtragem de informações e integração entre a aplicação e o banco de dados por meio de uma interface interativa via terminal.",
+	"image": "/images/literalura.png",
+	"video": "",
+	"area": "Back-end",
+	"technologies": [
+	"Java",
+	"Spring Boot",
+	"Spring Data JPA",
+	"Hibernate",
+	"PostgreSQL",
+	"Maven"
+	],
+	"link": "https://github.com/paulodiegosantos/Oracle-Next-Education---Challenge-Literalura",
+	"date": "2000-02-03"
+	},
+	{
+	"title": "Fórum Hub",
+	"description": "API REST para gerenciamento de tópicos, desenvolvida com Spring Boot, Spring Security, JWT e MySQL.",
+	"fullDescription": "O Fórum Hub é uma API REST desenvolvida como parte do Challenge da formação Oracle Next Education (ONE). O projeto simula o backend de um fórum e permite que usuários autenticados criem, consultem, atualizem e excluam tópicos de discussão. A aplicação implementa um CRUD completo, persistência de dados com Spring Data JPA e Hibernate, regras de negócio para impedir tópicos duplicados e autenticação baseada em JSON Web Token (JWT). A segurança é gerenciada pelo Spring Security, com controle de rotas públicas e protegidas, validação automática de tokens e um filtro de autenticação responsável por identificar o usuário em cada requisição. O projeto também utiliza DTOs para a comunicação entre as camadas e MySQL para o armazenamento dos dados.",
+	"image": "/images/default-api-logo.png",
+	"video": "",
+	"area": "Back-end",
+	"technologies": [
+	"Java",
+	"Spring Boot",
+	"Spring Security",
+	"JWT",
+	"Spring Data JPA",
+	"Hibernate",
+	"MySQL",
+	"Maven"
+	],
+	"link": "https://github.com/paulodiegosantos/Oracle-Next-Education---Challenge-Forum-Hub",
+	"date": "2000-02-04"
+	}
+]
